@@ -1,0 +1,12 @@
+curl -v --include  https://unsplash.com/oauth/authorize
+
+
+
+curl --request POST \ 
+--url 'https://unsplash.com/oauth/authorize' \ 
+--header 'content-type:application/x-www-form-urlencoded' \
+--data 'grant_type=Client_credentials&client_id= "" &redirect_uri=""\
+&audience= ""
+
+
+curl --request POST -h 
