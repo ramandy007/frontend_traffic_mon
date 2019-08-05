@@ -1,0 +1,14 @@
+* {
+  margin: 0px;
+  text-align: left;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.Base {
+  display: flex;
+  justify-content: center;
+  /* margin: 25px; */
+  position: relative;
+  top: 50px;
+}
