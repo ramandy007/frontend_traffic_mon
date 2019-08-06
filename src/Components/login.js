@@ -1,9 +1,16 @@
 import React from "react";
 
 import { Button, Form } from "react-bootstrap";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  withRouter
+} from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "./login.css";
+import Register from "./register";
 
 class Login extends React.Component {
   render() {
@@ -21,10 +28,14 @@ class Login extends React.Component {
           <Button variant="primary" type="submit">
             Login
           </Button>
-          <Button variant="primary" type="submit" className="register">
-            Register
-          </Button>
+          <Link to="/register">
+            <Button variant="primary" type="submit" className="register">
+              Register
+            </Button>
+          </Link>
         </Form>
+
+        <Route path="/register" exact render={() => <Register />} />
       </div>
     );
   }

@@ -1,6 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  withRouter
+} from "react-router-dom";
+import Login from "./login";
 import "./Navbar.css";
+import Register from "./register";
 
 function Navbar() {
   let node = React.createRef();
@@ -20,33 +28,42 @@ function Navbar() {
   };
 
   return (
-    <div className="Navbar">
-      <nav>
-        <div className="logo">
-          <h4>the nav</h4>
-        </div>
+    <Router>
+      <div className="Navbar">
+        <nav>
+          <div className="logo">
+            <h4>the nav</h4>
+          </div>
 
-        <ul className="nav-links" ref={node}>
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">Login</a>
-          </li>
-          {/* <li><a href="#">  </a></li>     */}
-        </ul>
+          <ul className="nav-links" ref={node}>
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">About</a>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            {/* <li><a href="#">  </a></li>     */}
+          </ul>
 
-        <div className="burger" onClick={navSlide}>
-          <div className="line1" />
-          <div className="line2" />
-          <div className="line3" />
-        </div>
-      </nav>
-    </div>
+          <div className="burger" onClick={navSlide}>
+            <div className="line1" />
+            <div className="line2" />
+            <div className="line3" />
+          </div>
+        </nav>
+
+        <Route path="/login" exact render={() => <Login />} />
+        <Route path="/register/" exact component={Registerfunc} />
+      </div>
+    </Router>
   );
+}
+
+function Registerfunc() {
+  return <Register />;
 }
 
 export default Navbar;
