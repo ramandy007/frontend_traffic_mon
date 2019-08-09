@@ -1,16 +1,10 @@
 import React from "react";
 
 import { Button, Form } from "react-bootstrap";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  withRouter
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "./login.css";
-import Register from "./register";
 
 class Login extends React.Component {
   render() {
@@ -34,8 +28,6 @@ class Login extends React.Component {
             </Button>
           </Link>
         </Form>
-
-        <Route path="/register" exact render={() => <Register />} />
       </div>
     );
   }

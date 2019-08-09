@@ -1,0 +1,26 @@
+* {
+  margin: 0px;
+  text-align: left;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.Base {
+  display: flex;
+  justify-content: center;
+  /* margin: 25px; */
+  position: relative;
+  top: 50px;
+}
+.ltr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+.ltr-child {
+  /* display: flex;
+  justify-content: space-evenly; */
+  margin: 25px;
+}

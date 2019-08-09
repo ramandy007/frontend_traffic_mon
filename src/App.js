@@ -5,17 +5,16 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import logo from "./logo.svg";
 import Navbar from "./Components/Navbar";
 import "./App.css";
-import Register from "./Components/register";
 
-import Login from "./Components/login";
+import User from "./users/user";
 
 function App() {
   return (
-    
-      <div className="App">
-        <Navbar />
-      </div>
-    
+    <div className="App">
+      <Navbar />
+
+      <User />
+    </div>
   );
 }
 
