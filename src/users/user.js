@@ -21,7 +21,24 @@ class User extends React.Component {
               <Form.Label>Source</Form.Label>
               <Form.Control type="text" placeholder="source" />
             </div>
-            <div>three</div>
+
+            <div className="btn-user">
+              <Button variant="primary" type="submit">
+                Search
+              </Button>
+            </div>
+          </Form.Group>
+          <Form.Group ControlId="UserInfo" className="ltr_1">
+            <div className="ltr-child">
+              <Form.Label>License Number</Form.Label>
+              <Form.Control type="text" placeholder="License Number" />
+            </div>
+
+            <div className="btn-user">
+              <Button variant="primary" type="submit">
+                Search
+              </Button>
+            </div>
           </Form.Group>
         </Form>
       </div>

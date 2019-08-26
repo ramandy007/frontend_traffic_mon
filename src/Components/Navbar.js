@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Login from "./login";
 import "./Navbar.css";
 import Register from "./register";
+import User from "./../users/user";
 
 function Navbar() {
   let node = React.createRef();
@@ -32,7 +33,7 @@ function Navbar() {
 
           <ul className="nav-links" ref={node}>
             <li>
-              <a href="#">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <a href="#">About</a>
@@ -52,6 +53,7 @@ function Navbar() {
 
         <Route path="/login" exact render={() => <Login />} />
         <Route path="/register/" exact component={Registerfunc} />
+        <Route path="/" exact component={home} />
       </div>
     </Router>
   );
@@ -59,6 +61,10 @@ function Navbar() {
 
 function Registerfunc() {
   return <Register />;
+}
+
+function home() {
+  return <User />;
 }
 
 export default Navbar;
