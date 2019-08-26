@@ -1,12 +1,10 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React,{Component}from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Login from "./login";
-import "./Navbar.css";
-import Register from "./register";
-import User from "./../users/user";
+import React, { Component } from "react";
+import { Link, withRouter, Router } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
 
-class Navbar extends Component{
+import "./Navbar.css";
+
+class Navbar_boot extends Component {
   constructor(props) {
     super(props);
     this.toggleNavbar = this.toggleNavbar.bind(this);
@@ -14,9 +12,6 @@ class Navbar extends Component{
       collapsed: true
     };
   }
- 
-  
-  
   toggleNavbar() {
     this.setState({
       collapsed: !this.state.collapsed
@@ -28,15 +23,8 @@ class Navbar extends Component{
     localStorage.removeItem("usertoken");
     this.props.history.push(`/`);
   }
- 
 
-  render(){
-    function Registerfunc() {
-      return <Register />;
-    }
-    function home() {
-      return <User />;
-    }
+  render() {
     const loginRegLink = (
       <ul className="navbar-nav">
         <li className="nav-item">
@@ -93,9 +81,10 @@ class Navbar extends Component{
       ? "navbar-toggler navbar-toggler collapsed"
       : "navbar-toggler navbar-toggler";
 
-  return (
-    <Router>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
+    return (
+      <Router>
+        {" "}
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
           <button
             className={`${classTwo}`}
             onClick={this.toggleNavbar}
@@ -125,13 +114,9 @@ class Navbar extends Component{
         <Route path="/login" exact render={() => <Login />} />
         <Route path="/register/" exact component={Registerfunc} />
         <Route path="/" exact component={home} />
-    </Router>
-  );
+      </Router>
+    );
+  }
 }
 
-
-
-
-  }
-
-export default Navbar;
+export default Navbar_boot;

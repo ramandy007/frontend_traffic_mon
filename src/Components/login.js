@@ -22,11 +22,11 @@ class Login extends React.Component {
           <Button variant="primary" type="submit">
             Login
           </Button>
-          <Link to="/register">
+          {/* <Link to="/register">
             <Button variant="primary" type="submit" className="register">
               Register
             </Button>
-          </Link>
+          </Link> */}
         </Form>
       </div>
     );
