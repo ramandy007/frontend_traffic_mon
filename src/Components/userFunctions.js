@@ -12,11 +12,12 @@ export const register = newUser => {
 
 export const login = user => {
   return axios
-    .post("users/login", {
+    .post("/api/users/login", {
       email: user.email,
       password: user.password
     })
     .then(res => {
+      console.log("loged in");
       localStorage.setItem("usertoken", res.data);
       return res.data;
     })
