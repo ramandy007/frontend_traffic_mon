@@ -18,6 +18,49 @@ class Register extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  errors = {
+    email: true,
+    password: true
+  };
+  setError() {
+    // var keys = Object.keys(this.errors);
+
+    // for (var key of keys) {
+    //   if (this.state[key].length > 0) {
+    //     // console.log("true" + key );
+
+    //     this.errors[key] = true;
+    //     // console.log(this.state[key]);
+    //   }
+    // }
+    if (this.state.email1.localeCompare(this.state.email2))
+      this.errors.email = false;
+    else this.errors.email = true;
+    if (this.state.password1.localeCompare(this.state.password2))
+      this.errors.password = false;
+    else this.errors.password = true;
+    // console.log(keys);
+  }
+  canBeSubmitted() {
+    const {
+      name,
+      email1,
+      email2,
+      phonenumber,
+      licensenumber,
+      password1,
+      password2
+    } = this.state;
+    return (
+      name.length > 0 &&
+      email1.length > 0 &&
+      email2.length > 0 &&
+      phonenumber.length > 0 &&
+      licensenumber.length > 0 &&
+      password1.length > 0 &&
+      password2.length > 0
+    );
+  }
   onChange(e) {
     // console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
@@ -28,6 +71,7 @@ class Register extends React.Component {
       email: this.state.email1,
       password: this.state.password1
     };
+
     console.log(user);
 
     register(user).then(res => {
@@ -36,6 +80,10 @@ class Register extends React.Component {
     e.preventDefault();
   }
   render() {
+    const isEnabled = this.canBeSubmitted();
+    this.setError();
+    console.log(this.errors);
+
     return (
       <div className="Base">
         <Form onSubmit={this.onSubmit}>
@@ -72,7 +120,9 @@ class Register extends React.Component {
                   value={this.state.email2}
                   onChange={this.onChange}
                 />
-                <Form.Text className="text-muted" />
+                {!this.errors.email ? (
+                  <Form.Text>email doesnt match</Form.Text>
+                ) : null}
               </Form.Group>
             </Col>
           </Form.Row>
@@ -98,6 +148,9 @@ class Register extends React.Component {
                   value={this.state.password2}
                   onChange={this.onChange}
                 />
+                {!this.errors.password ? (
+                  <Form.Text>passwords doesnt match</Form.Text>
+                ) : null}
               </Form.Group>
             </Col>
           </Form.Row>
@@ -122,7 +175,7 @@ class Register extends React.Component {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" disabled={!isEnabled}>
             Submit
           </Button>
         </Form>
