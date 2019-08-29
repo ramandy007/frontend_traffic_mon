@@ -2,8 +2,12 @@ import axios from "axios";
 export const register = newUser => {
   return axios
     .post("/api/users/register", {
-      email: newUser.email,
-      password: newUser.password
+      name: newUser.name,
+      user_name: newUser.login_username,
+      password: newUser.user_password,
+      user_address: newUser.user_address,
+      licence_no: newUser.licence_no,
+      user_permission: newUser.user_permission
     })
     .then(res => {
       console.log("Registered");

@@ -8,12 +8,14 @@ class Register extends React.Component {
     super(props);
     this.state = {
       name: "",
+      login_username: "",
       email1: "",
       email2: "",
       phonenumber: "",
       licensenumber: "",
       password1: "",
-      password2: ""
+      password2: "",
+      user_permission: ""
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -68,8 +70,11 @@ class Register extends React.Component {
   onSubmit(e) {
     const user = {
       name: this.state.name,
-      email: this.state.email1,
-      password: this.state.password1
+      login_username: this.state.login_username,
+      user_password: this.state.password1,
+      user_address: this.state.email1,
+      licence_no: this.state.licensenumber,
+      user_permission: this.state.user_permission
     };
 
     console.log(user);
@@ -94,6 +99,14 @@ class Register extends React.Component {
               placeholder="enter your Name"
               name="name"
               value={this.state.name}
+              onChange={this.onChange}
+            />
+            <Form.Label>UserName</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="enter your UserName"
+              name="login_username"
+              value={this.state.login_username}
               onChange={this.onChange}
             />
           </Form.Group>
@@ -171,6 +184,17 @@ class Register extends React.Component {
               placeholder="enter your License No"
               name="licensenumber"
               value={this.state.licensenumber}
+              onChange={this.onChange}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicuserPermission">
+            <Form.Label>UserPermission</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="admin/police/norm"
+              name="user_permission"
+              value={this.state.user_permission}
               onChange={this.onChange}
             />
           </Form.Group>
