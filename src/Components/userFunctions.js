@@ -14,6 +14,14 @@ export const register = newUser => {
     });
 };
 
+export var list_logins = async function() {
+  var result = await axios.get("/api/users/register");
+
+  return result;
+
+  // console.log(axios.get("/api/users/register"));
+};
+
 export const login = user => {
   return axios
     .post("/api/users/login", {

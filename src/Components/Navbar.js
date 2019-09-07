@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React,{Component}from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Login from "./login";
 import "./Navbar.css";
 import Register from "./register";
+import List from "./list";
 import User from "./../users/user";
 
-class Navbar extends Component{
+class Navbar extends Component {
   constructor(props) {
     super(props);
     this.toggleNavbar = this.toggleNavbar.bind(this);
@@ -14,9 +15,7 @@ class Navbar extends Component{
       collapsed: true
     };
   }
- 
-  
-  
+
   toggleNavbar() {
     this.setState({
       collapsed: !this.state.collapsed
@@ -28,11 +27,13 @@ class Navbar extends Component{
     localStorage.removeItem("usertoken");
     this.props.history.push(`/`);
   }
- 
 
-  render(){
+  render() {
     function Registerfunc() {
       return <Register />;
+    }
+    function Listfunc() {
+      return <List />;
     }
     function home() {
       return <User />;
@@ -50,6 +51,13 @@ class Navbar extends Component{
           <Link to="/register" className="nav-link">
             <button className="btn btn-outline-success my-2 my-sm-0">
               Register
+            </button>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/list" className="nav-link">
+            <button className="btn btn-outline-success my-2 my-sm-0">
+              list
             </button>
           </Link>
         </li>
@@ -93,9 +101,9 @@ class Navbar extends Component{
       ? "navbar-toggler navbar-toggler collapsed"
       : "navbar-toggler navbar-toggler";
 
-  return (
-    <Router>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
+    return (
+      <Router>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
           <button
             className={`${classTwo}`}
             onClick={this.toggleNavbar}
@@ -124,14 +132,11 @@ class Navbar extends Component{
         </nav>
         <Route path="/login" exact render={() => <Login />} />
         <Route path="/register/" exact component={Registerfunc} />
+        <Route path="/list/" exact component={Listfunc} />
         <Route path="/" exact component={home} />
-    </Router>
-  );
-}
-
-
-
-
+      </Router>
+    );
   }
+}
 
 export default Navbar;
