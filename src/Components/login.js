@@ -10,7 +10,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      user_name: "",
       password: ""
     };
     this.onSubmit = this.onSubmit.bind(this);
@@ -23,13 +23,13 @@ class Login extends React.Component {
   onSubmit(e) {
     e.preventDefault();
     const user = {
-      email: this.state.email,
+      user_name: this.state.user_name,
       password: this.state.password
     };
 
     login(user).then(res => {
       if (res) {
-        this.props.history.push(`/profile`);
+        console.log('this is response', res);
       }
     });
   }
@@ -38,12 +38,12 @@ class Login extends React.Component {
       <div className="Base">
         <Form onSubmit={this.onSubmit}>
           <Form.Group controlId="formGroupEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label>UserName</Form.Label>
             <Form.Control
-              type="email"
-              placeholder="Enter email"
-              name="email"
-              value={this.state.email}
+              type="text"
+              placeholder="Enter username"
+              name="user_name"
+              value={this.state.user_name}
               onChange={this.onChange}
             />
           </Form.Group>

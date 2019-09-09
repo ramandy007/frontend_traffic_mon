@@ -14,7 +14,7 @@ export const register = newUser => {
     });
 };
 
-export var list_logins = async function() {
+export var list_logins = async function () {
   var result = await axios.get("/api/users/register");
 
   return result;
@@ -25,14 +25,10 @@ export var list_logins = async function() {
 export const login = user => {
   return axios
     .post("/api/users/login", {
-      email: user.email,
+      user_name: user.user_name,
       password: user.password
     })
-    .then(res => {
-      console.log("loged in");
-      localStorage.setItem("usertoken", res.data);
-      return res.data;
-    })
+
     .catch(err => {
       console.log(err);
     });
