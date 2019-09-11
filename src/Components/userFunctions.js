@@ -1,4 +1,7 @@
 import axios from "axios";
+// import AuthService from 'authservice.js';
+
+// var Auth_Service = new AuthService();
 export const register = newUser => {
   return axios
     .post("/api/users/register", {
@@ -14,6 +17,7 @@ export const register = newUser => {
     });
 };
 
+
 export var list_logins = async function () {
   var result = await axios.get("/api/users/register");
 
@@ -23,10 +27,12 @@ export var list_logins = async function () {
 };
 
 export const login = user => {
-  return axios
+  axios
     .post("/api/users/login", {
       user_name: user.user_name,
       password: user.password
+    }).then(res => {
+
     })
 
     .catch(err => {

@@ -7,14 +7,18 @@ import Register from "./register";
 import List from "./list";
 import User from "./../users/user";
 
+
 class Navbar extends Component {
   constructor(props) {
     super(props);
+
     this.toggleNavbar = this.toggleNavbar.bind(this);
     this.state = {
       collapsed: true
     };
+    this.logOut = this.logOut.bind(this);
   }
+
 
   toggleNavbar() {
     this.setState({
@@ -29,14 +33,14 @@ class Navbar extends Component {
   }
 
   render() {
-    function Registerfunc() {
-      return <Register />;
+    function Registerfunc(routeProps) {
+      return <Register {...routeProps} />;
     }
-    function Listfunc() {
-      return <List />;
+    function Listfunc(routeProps) {
+      return <List  {...routeProps} />;
     }
-    function home() {
-      return <User />;
+    function home(routeProps) {
+      return <User {...routeProps} />;
     }
     const loginRegLink = (
       <ul className="navbar-nav">
@@ -80,15 +84,15 @@ class Navbar extends Component {
             </button>
           </Link>
         </li>
-        <li className="navbar-nav">
-          {/* <a href="" onClick={this.logOut.bind(this)} className="nav-link"> */}
-          <button
-            className="btn btn-outline-success my-2 my-sm-0 nav-link"
-            onClick={this.logOut.bind(this)}
+        <li className="nav-item">
+          <div className="nav-link"><button
+            className="btn btn-outline-success my-2 my-sm-0 "
+            onClick={this.logOut}
           >
             Logout
-          </button>
-          {/* </a> */}
+          </button></div>
+
+
         </li>
       </ul>
     );
@@ -127,10 +131,10 @@ class Navbar extends Component {
                 </Link>
               </li>
             </ul>
-            {localStorage.usertoken ? userLink : loginRegLink}
+            {localStorage.id_token ? userLink : loginRegLink}
           </div>
         </nav>
-        <Route path="/login" exact render={() => <Login />} />
+        <Route path="/login" exact render={(routeProps) => <Login {...routeProps} />} />
         <Route path="/register/" exact component={Registerfunc} />
         <Route path="/list/" exact component={Listfunc} />
         <Route path="/" exact component={home} />
