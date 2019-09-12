@@ -47,7 +47,8 @@ export default class AuthService {
     }
 
     setToken(idToken) {
-        localStorage.setItem('id_token', idToken);
+        if (typeof idToken !== 'undefined')
+            localStorage.setItem('id_token', idToken);
 
     }
 
@@ -57,7 +58,7 @@ export default class AuthService {
 
     logout() {
         localStorage.removeItem('id_token')
-        
+
     }
     getProfile() {
         return decode(this.getToken())

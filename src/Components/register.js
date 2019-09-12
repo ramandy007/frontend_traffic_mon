@@ -168,7 +168,9 @@ class Register extends React.Component {
           <Form.Group controlId="formBasicPhoneNumber">
             <Form.Label>PhoneNumber</Form.Label>
             <Form.Control
-              type="text"
+              type="tel"
+              pattern="((\+*)((0[ -]+)*|(91 )*)(\d{12}+|\d{10}+))|\d{5}([- ]*)\d{6}
+"
               placeholder="enter your Phone Number"
               name="phonenumber"
               value={this.state.phonenumber}
@@ -206,4 +208,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+export  default  Register;

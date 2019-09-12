@@ -1,11 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Login from "./login";
+import { withRouter, Link } from "react-router-dom";
 import "./Navbar.css";
-import Register from "./register";
-import List from "./list";
-import User from "./../users/user";
+
 
 
 class Navbar extends Component {
@@ -28,26 +25,52 @@ class Navbar extends Component {
 
   logOut(e) {
     e.preventDefault();
-    localStorage.removeItem("usertoken");
+    localStorage.removeItem("id_token");
     this.props.history.push(`/`);
   }
 
   render() {
-    function Registerfunc(routeProps) {
-      return <Register {...routeProps} />;
-    }
-    function Listfunc(routeProps) {
-      return <List  {...routeProps} />;
-    }
-    function home(routeProps) {
-      return <User {...routeProps} />;
-    }
+
     const loginRegLink = (
       <ul className="navbar-nav">
         <li className="nav-item">
           <Link to="/login" className="nav-link">
             <button className="btn btn-outline-success my-2 my-sm-0">
               Login
+            </button>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/search" className="nav-link">
+            <button className="btn btn-outline-success my-2 my-sm-0">
+              Search
+            </button>
+          </Link>
+        </li>
+
+        <li className="nav-item">
+          <Link to="/list" className="nav-link">
+            <button className="btn btn-outline-success my-2 my-sm-0">
+              list
+            </button>
+          </Link>
+        </li>
+      </ul>
+    );
+
+    const userLink = (
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <Link to="/users" className="nav-link">
+            <button className="btn btn-outline-success my-2 my-sm-0">
+              User
+            </button>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/search" className="nav-link">
+            <button className="btn btn-outline-success my-2 my-sm-0">
+              Search
             </button>
           </Link>
         </li>
@@ -62,25 +85,6 @@ class Navbar extends Component {
           <Link to="/list" className="nav-link">
             <button className="btn btn-outline-success my-2 my-sm-0">
               list
-            </button>
-          </Link>
-        </li>
-      </ul>
-    );
-
-    const userLink = (
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <Link to="/profile" className="nav-link">
-            <button className="btn btn-outline-success my-2 my-sm-0">
-              User
-            </button>
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/search" className="nav-link">
-            <button className="btn btn-outline-success my-2 my-sm-0">
-              Search
             </button>
           </Link>
         </li>
@@ -106,41 +110,38 @@ class Navbar extends Component {
       : "navbar-toggler navbar-toggler";
 
     return (
-      <Router>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
-          <button
-            className={`${classTwo}`}
-            onClick={this.toggleNavbar}
-            type="button"
-            data-toggle="collapse"
-            data-target="navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
 
-          <div className={`${classOne}`} id="navbarResponsive">
-            <ul className="navbar-nav mr-auto ">
-              <li className="nav-item active ">
-                <Link to="/" className="nav-link">
-                  <button className="btn btn-outline-success my-2 my-sm-0">
-                    Home
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <button
+          className={`${classTwo}`}
+          onClick={this.toggleNavbar}
+          type="button"
+          data-toggle="collapse"
+          data-target="navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" />
+        </button>
+
+        <div className={`${classOne}`} id="navbarResponsive">
+          <ul className="navbar-nav mr-auto ">
+            <li className="nav-item active ">
+              <Link to="/" className="nav-link">
+                <button className="btn btn-outline-success my-2 my-sm-0">
+                  Home
                   </button>
-                </Link>
-              </li>
-            </ul>
-            {localStorage.id_token ? userLink : loginRegLink}
-          </div>
-        </nav>
-        <Route path="/login" exact render={(routeProps) => <Login {...routeProps} />} />
-        <Route path="/register/" exact component={Registerfunc} />
-        <Route path="/list/" exact component={Listfunc} />
-        <Route path="/" exact component={home} />
-      </Router>
+              </Link>
+            </li>
+          </ul>
+          {localStorage.id_token ? userLink : loginRegLink}
+        </div>
+      </nav>
+
+
     );
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);

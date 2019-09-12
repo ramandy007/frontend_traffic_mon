@@ -1,20 +1,44 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import logo from "./logo.svg";
 import Navbar from "./Components/Navbar";
 import "./App.css";
-
+import Login from "./Components/login";
+import Register from "./Components/register";
+import List from "./Components/list";
+import List_user from "./Components/list_users";
 import User from "./users/user";
+import Landing from "./Components/landing"
+
+
+function Registerfunc(routeProps) {
+  return <Register {...routeProps} />;
+}
+function Listfunc(routeProps) {
+  return <List  {...routeProps} />;
+}
+function search(routeProps) {
+  return <User {...routeProps} />;
+}
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter> <div className="App">
       <Navbar />
 
-      {/* <User /> */}
-    </div>
+
+      <Route path="/login" exact render={(routeProps) => <Login {...routeProps} />} />
+      <Route path="/register/" exact component={Registerfunc} />
+      <Route path="/list/" exact component={Listfunc} />
+      <Route path="/users/" exact render={(routeProps) => <List_user {...routeProps} />} />
+
+      <Route path="/search/" exact component={search} />
+      <Route path="/" exact render={(routeProps) => <Landing {...routeProps} />} />
+
+    </div></BrowserRouter>
+
   );
 }
 

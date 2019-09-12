@@ -46,7 +46,7 @@ class List extends React.Component {
           </Table>
         </div>
       );
-    } else return <div>hahah</div>;
+    } else return <div> </div>;
 
 
   }

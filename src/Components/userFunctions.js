@@ -17,14 +17,34 @@ export const register = newUser => {
     });
 };
 
+export const EdituserDetails = newUser => {
+  return axios
+    .post("/api/users/editusers", {
+      user_id: newUser.user_id,
+      name: newUser.name,
+      user_name: newUser.login_username,
+      password: newUser.user_password,
+      user_address: newUser.user_address,
+      licence_no: newUser.licence_no,
+      user_permission: newUser.user_permission
+    })
+    .then(res => {
+      console.log("Changed");
+    });
+};
 
 export var list_logins = async function () {
-  var result = await axios.get("/api/users/register");
+  var result = await axios.get("/api/users/login");
 
   return result;
 
   // console.log(axios.get("/api/users/register"));
 };
+
+export var list_users = async function () {
+  var result = await axios.get("/api/users/users");
+  return result;
+}
 
 export const login = user => {
   axios
