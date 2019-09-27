@@ -68,6 +68,7 @@ class List_users extends React.Component {
     renderTableData() {
         return this.state.data.map((tuple, index) => {
             const { user_name, user_address, user_id, licence_no, user_permission } = tuple;
+            
 
             return (
                 <tr key={user_id} data-keys={user_id} >

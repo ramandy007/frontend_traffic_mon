@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Button, Form } from "react-bootstrap";
 // import { login } from "./userFunctions.js";
 import AuthService from './authservice';
@@ -27,19 +26,7 @@ class Login extends React.Component {
       this.props.history.replace('/')
   }
 
-  // onSubmit(e) {
-  //   e.preventDefault();
-  //   const user = {
-  //     user_name: this.state.user_name,
-  //     password: this.state.password
-  //   };
 
-  //   login(user).then(res => {
-  //     if (res) {
-  //       console.log('this is response', res);
-  //     }
-  //   });
-  // }
   onSubmit(e) {
     e.preventDefault();
     this.Auth.login(this.state.user_name, this.state.password).then((res) => {

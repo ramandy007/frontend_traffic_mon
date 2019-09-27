@@ -22,7 +22,7 @@ class Landing extends Component {
                     <div className="col-sm-8 mx-auto">
                         <h1 className="text-center">Welcome</h1>
                         {this.decoded ? (<div><p>your name is: {this.decoded.username}</p>
-                            <p>your permission is : {this.decoded.user_permission}</p></div>) : 'pls login'}
+                            <p>your permission is : {this.decoded.user_permission}</p></div>) : 'Login to access user details !!!'}
 
                     </div>
                 </div>

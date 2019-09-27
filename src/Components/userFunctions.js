@@ -59,3 +59,11 @@ export const login = user => {
       console.log(err);
     });
 };
+
+export const Search = plate_no => {
+  return axios.get("/api/users/vehicle_info", {
+    params: {
+      plate_no: plate_no
+    }
+  })
+}

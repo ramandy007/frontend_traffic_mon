@@ -81,6 +81,8 @@ class Register extends React.Component {
 
     register(user);
     e.preventDefault();
+    this.props.history.replace('/');
+
   }
   render() {
     const isEnabled = this.canBeSubmitted();
