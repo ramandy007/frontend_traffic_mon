@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-constructor */
-import React, { useState } from "react";
+import React from "react";
 
-import { Button, Form, Modal } from "react-bootstrap";
+import { Button, Form, Modal, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -17,14 +17,16 @@ class User extends React.Component {
       plate_no: null,
       License_no: null,
       resulr: null,
+      show: false
 
 
     }
-    this.show = false;
+
     this.message = null;
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onClose = this.onClose.bind(this);
+    this.handleClose = this.handleClose.bind(this)
+
 
 
   }
@@ -38,20 +40,15 @@ class User extends React.Component {
         console.log(res);
         this.setState({ resulr: res.data })
 
+        var data = res.data;
+        data ? this.setState({ show: true }) : this.setState({ show: false })
+
+
+
 
       });
 
-    // if (this.state.resulr){
-    //   var X;
-    //   for (X of this.state.resulr){
 
-    //     for(y in X){
-
-
-
-    //     }
-    //   }
-    // }
   }
 
   onChange(e) {
@@ -61,29 +58,56 @@ class User extends React.Component {
     this.setState({ resulr: null })
     this.show = !this.show;
   }
+  // show = false
 
 
+  handleClose() {
+    console.log('close clicked' + this.state.show)
+      ;
+    this.setState({
+      resulr: null,
+      show: false
+    })
+
+  }
+  renderTableData() {
+    if (this.state.resulr == null) return
+    else
+      return this.state.resulr.map((tuple, index) => {
+        var arr = []
+        for (var x in tuple) {
+          arr.push(<tr>
+            <td>{x}</td> <td>{tuple[x]}</td></tr>)
+        }
+        return arr
+      })
+  }
 
   render() {
 
 
 
-    var modal = (<Modal show={this.show} onHide={this.onClose} >
-      <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
-      </Modal.Header>
-      <Modal.Body> hello</Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" >
-          Close
-</Button>
-        <Button variant="primary" >
-          Save Changes
-</Button>
-      </Modal.Footer>
-    </Modal>);
+    var modal = (
+      <Modal show={this.state.show} onHide={this.handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><div>
+          <Table>
+            <tbody>
+              {this.state.show ? this.renderTableData() : null}
+            </tbody>
+          </Table>
+        </div></Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={this.handleClose}>
+            Close
+        </Button>
 
-    if (this.state.resulr) this.show = !this.show
+        </Modal.Footer>
+      </Modal>);
+
+
 
 
     return (
@@ -135,8 +159,8 @@ class User extends React.Component {
           </Form>
 
         </div>
-
         {modal}
+
 
       </div>
     );

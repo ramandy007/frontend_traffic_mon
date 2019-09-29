@@ -10,7 +10,8 @@ export const register = newUser => {
       password: newUser.user_password,
       user_address: newUser.user_address,
       licence_no: newUser.licence_no,
-      user_permission: newUser.user_permission
+      user_permission: newUser.user_permission,
+      phonenumber: newUser.phonenumber
     })
     .then(res => {
       console.log("Registered");

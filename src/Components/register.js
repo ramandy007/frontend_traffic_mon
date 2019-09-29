@@ -74,7 +74,8 @@ class Register extends React.Component {
       user_password: this.state.password1,
       user_address: this.state.email1,
       licence_no: this.state.licensenumber,
-      user_permission: this.state.user_permission
+      user_permission: this.state.user_permission,
+      phonenumber:this.state.phonenumber
     };
 
     console.log(user);
