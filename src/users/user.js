@@ -1,12 +1,12 @@
 /* eslint-disable no-useless-constructor */
 import React from "react";
 
-import { Button, Form, Modal, Table } from "react-bootstrap";
+import { Button, Form, Modal, Table, } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.css";
 
-import { Search } from './../Components/userFunctions';
+import { Search, Search_licence } from './../Components/userFunctions';
 
 import "./user.css";
 
@@ -34,19 +34,41 @@ class User extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    var plate_no = this.state.plate_no;
-    Search(plate_no)
-      .then(res => {
-        console.log(res);
-        this.setState({ resulr: res.data })
+    console.log(e.target.name)
+    if (e.target.name === 'plate') {
+      var plate_no = this.state.plate_no;
+      Search(plate_no)
+        .then(res => {
+          console.log(res);
+          this.setState({ resulr: res.data })
 
-        var data = res.data;
-        data ? this.setState({ show: true }) : this.setState({ show: false })
+          var data = res.data;
+          if (!data) alert('not found or invalid input');
+
+          data ? this.setState({ show: true }) : this.setState({ show: false })
 
 
 
 
-      });
+        });
+    }
+    else if (e.target.name === 'licence') {
+      var licence_no = this.state.License_no;
+      Search_licence(licence_no)
+        .then(res => {
+          console.log(res);
+          this.setState({ resulr: res.data })
+
+          var data = res.data;
+          if (!data) alert('not found or invalid input');
+          data ? this.setState({ show: true }) : this.setState({ show: false })
+
+
+
+
+        });
+    }
+
 
 
   }
@@ -90,7 +112,7 @@ class User extends React.Component {
     var modal = (
       <Modal show={this.state.show} onHide={this.handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>The Data</Modal.Title>
         </Modal.Header>
         <Modal.Body><div>
           <Table>
@@ -113,7 +135,7 @@ class User extends React.Component {
     return (
       <div>
         <div className="Base">
-          <Form onSubmit={this.onSubmit}>
+          <Form name='source_destination' onSubmit={this.onSubmit}>
             <Form.Group controlId="formUserDestination" className="ltr">
               <div className="ltr-child">
                 <Form.Label>Destination</Form.Label>
@@ -129,11 +151,13 @@ class User extends React.Component {
                   Search
               </Button>
               </div>
-            </Form.Group>
+            </Form.Group></Form>
+
+          <Form name='licence' onSubmit={this.onSubmit}>
             <Form.Group ControlId="UserInfo" className="ltr_1">
               <div className="ltr-child">
                 <Form.Label>License Number</Form.Label>
-                <Form.Control type="text" placeholder="License Number" name='licence_number' onChange={this.onChange} value={this.state.License_no} />
+                <Form.Control type="text" placeholder="License Number" name='License_no' onChange={this.onChange} value={this.state.License_no} />
               </div>
 
 
@@ -143,6 +167,9 @@ class User extends React.Component {
               </Button>
               </div>
             </Form.Group>
+          </Form>
+
+          <Form name='plate' onSubmit={this.onSubmit}>
             <Form.Group ControlId="UserInfo" className="ltr_1">
               <div className="ltr-child">
                 <Form.Label>Plate Number</Form.Label>
@@ -151,7 +178,7 @@ class User extends React.Component {
               </div>
 
               <div className="btn-user">
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" name='search'>
                   Search
               </Button>
               </div>
@@ -162,7 +189,7 @@ class User extends React.Component {
         {modal}
 
 
-      </div>
+      </div >
     );
   }
 }

@@ -68,3 +68,11 @@ export const Search = plate_no => {
     }
   })
 }
+
+export const Search_licence=licence_no=>{
+  return axios.get("/api/users/licence_info",{
+    params:{
+      licence_no:licence_no
+    }
+  })
+}
