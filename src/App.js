@@ -11,6 +11,7 @@ import List from "./Components/list";
 import List_user from "./Components/list_users";
 import User from "./users/user";
 import Landing from "./Components/landing"
+import InsertFine from "./Components/insert_fine"
 
 
 function Registerfunc(routeProps) {
@@ -31,8 +32,16 @@ function App() {
 
       <Route path="/login" exact render={(routeProps) => <Login {...routeProps} />} />
       <Route path="/register/" exact component={Registerfunc} />
+
       <Route path="/list/" exact component={Listfunc} />
+
+
+      { /* eslint-disable-next-line react/jsx-pascal-case*/}
       <Route path="/users/" exact render={(routeProps) => <List_user {...routeProps} />} />
+
+      <Route path="/insert_fine" exact component={InsertFine} />
+
+
 
       <Route path="/search/" exact component={search} />
       <Route path="/" exact render={(routeProps) => <Landing {...routeProps} />} />

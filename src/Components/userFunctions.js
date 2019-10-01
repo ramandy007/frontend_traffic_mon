@@ -47,6 +47,19 @@ export var list_users = async function () {
   return result;
 }
 
+export const insertFine = data => {
+  return axios.post("/api/users/input_fine", {
+    tp_id: data.policeId,
+    fine: data.fine,
+    licence_no: data.licenceNo
+  })
+  // .then(res => {
+  //   console.log(res)
+  // }).catch(err => {
+  //   console.log(err)
+  // })
+}
+
 export const login = user => {
   axios
     .post("/api/users/login", {
@@ -69,10 +82,10 @@ export const Search = plate_no => {
   })
 }
 
-export const Search_licence=licence_no=>{
-  return axios.get("/api/users/licence_info",{
-    params:{
-      licence_no:licence_no
+export const Search_licence = licence_no => {
+  return axios.get("/api/users/licence_info", {
+    params: {
+      licence_no: licence_no
     }
   })
 }

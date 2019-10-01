@@ -89,6 +89,13 @@ class Navbar extends Component {
           </Link>
         </li>
         <li className="nav-item">
+          <Link to="/insert_fine" className="nav-link">
+            <button className="btn btn-outline-success my-2 my-sm-0">
+              InsertFine
+            </button>
+          </Link>
+        </li>
+        <li className="nav-item">
           <div className="nav-link"><button
             className="btn btn-outline-success my-2 my-sm-0 "
             onClick={this.logOut}
