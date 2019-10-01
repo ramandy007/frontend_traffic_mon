@@ -18,6 +18,7 @@ class InsertFine extends React.Component {
         this.onSubmit = this.onSubmit.bind(this)
         this.onChange = this.onChange.bind(this)
 
+
         this.myref = React.createRef()
         this.error = ''
     }
@@ -28,9 +29,9 @@ class InsertFine extends React.Component {
         else {
             this.setState({ error: false })
             insertFine(this.state).then(res => {
-                console.log('res from insidde', res.data);
+                console.log(String(res.data));
                 this.error = res.data
-                if (res.data === 'fine insertion success')
+                if (String(res.data) == 'fine insertion success')
                     this.setState({ success: true })
                 else this.setState({ success: false })
 
