@@ -31,6 +31,7 @@ class InsertFine extends React.Component {
             insertFine(this.state).then(res => {
                 console.log(String(res.data));
                 this.error = res.data
+                // eslint-disable-next-line eqeqeq
                 if (String(res.data) == 'fine insertion success')
                     this.setState({ success: true })
                 else this.setState({ success: false })
