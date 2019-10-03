@@ -89,3 +89,26 @@ export const Search_licence = licence_no => {
     }
   })
 }
+
+
+export const input_vehicles = vehicle_info => {
+
+  // var data = {
+  //   plate_no: vehicle_info.plate_no,
+  //   vehicle_type: vehicle_info.vehicle_type,
+  //   manufacture: vehicle_info.manufacture,
+  //   user_id: vehicle_info.user_id
+  // }
+
+
+
+
+  return axios.post('/api/users/vehicles', {
+    plate_no: vehicle_info.plate_no,
+    vehicle_type: vehicle_info.vehicle_type,
+    manufacture: vehicle_info.manufacture,
+    user_id: vehicle_info.user_id
+  });
+
+
+}

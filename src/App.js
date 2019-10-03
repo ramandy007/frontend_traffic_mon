@@ -12,6 +12,7 @@ import List_user from "./Components/list_users";
 import User from "./users/user";
 import Landing from "./Components/landing"
 import InsertFine from "./Components/insert_fine"
+import InsertVehicles from "./Components/insert_vehicle";
 
 
 function Registerfunc(routeProps) {
@@ -40,6 +41,8 @@ function App() {
       <Route path="/users/" exact render={(routeProps) => <List_user {...routeProps} />} />
 
       <Route path="/insert_fine" exact component={InsertFine} />
+
+      <Route path="/insert_vehicles" exact component={InsertVehicles} />
 
 
 
