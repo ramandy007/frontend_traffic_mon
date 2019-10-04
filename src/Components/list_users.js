@@ -72,7 +72,7 @@ class List_users extends React.Component {
 
     renderTableData() {
         return this.state.data.map((tuple, index) => {
-            const { user_name, user_address, user_id, licence_no, user_permission } = tuple;
+            const { user_name, user_address, user_id, licence_no, user_permission, user_mobile } = tuple;
 
 
             return (
@@ -81,15 +81,9 @@ class List_users extends React.Component {
                     <td>{user_name}</td>
                     <td>{user_address}</td>
                     <td>{licence_no}</td>
+                    <td>{user_mobile}</td>
                     <td>{user_permission}</td>
-                    {/* <td><Button data-keys={user_id} hallo={user_id} variant="primary" onClick={(e) => {
-                        // console.log(e.target.dataset.keys);
-                        this.editUser(e.target.dataset.keys);
 
-
-                    }} >
-                        edit
-      </Button></td> */}
                     <td>< this.Example user_id={user_id} rerender={this.rerender} /></td>
 
                 </tr >
@@ -103,19 +97,22 @@ class List_users extends React.Component {
 
             'width': '75%',
             'margin': 'auto',
-            'padding': ' 10px'
+            'padding': ' 10px',
+            'border': '2px solid #dee2e6',
+            'box-shadow': ' 0px 0px 2px cadetblue'
         }
         console.log(this.state.data);
         if (this.state.data !== null) {
             return (
                 <div>
-                    <Table striped bordered hover className="table-striped table-dark" style={style}>
+                    <Table striped bordered hover className="table-striped table-light" style={style}>
                         <thead>
                             <tr>
                                 <th>user_id </th>
                                 <th>user_name </th>
                                 <th>email_address </th>
                                 <th>licence_no </th>
+                                <th>mobile_no</th>
                                 <th>user_permission</th>
 
                             </tr>

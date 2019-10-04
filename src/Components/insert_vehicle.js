@@ -60,8 +60,8 @@ class InputVehicles extends React.Component {
             color: '#D84315'
         }
         return (
-            <div className='Base-3' style={style}>
-                <Form onSubmit={this.onSubmit}>
+            <div className='Base-3 login-Base' style={style}>
+                <Form onSubmit={this.onSubmit} className="">
                     <Row>
                         <Col>
                             <Form.Control placeholder="Plate Number" name="plate_no" value={this.state.plate_no} onChange={this.onChange} />

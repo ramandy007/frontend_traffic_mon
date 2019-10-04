@@ -38,9 +38,12 @@ class Login extends React.Component {
 
 
   render() {
+    const align_center = { 'text-align': 'center', 'font-weight': 'bold', 'font-size': '1.3em' }
     return (
       <div className="Base-login">
-        <Form onSubmit={this.onSubmit}>
+        <Form onSubmit={this.onSubmit} className="login-Base">
+          <div style={align_center}><Form.Label class="form label"> Sign In </Form.Label></div>
+
           <Form.Group controlId="formGroupEmail">
             <Form.Label class="form label">Username</Form.Label >
             <Form.Control
@@ -70,6 +73,7 @@ class Login extends React.Component {
             </Button>
           </Link> */}
         </Form>
+
       </div>
     );
   }

@@ -10,6 +10,7 @@ import Register from "./Components/register";
 import List from "./Components/list";
 import List_user from "./Components/list_users";
 import User from "./users/user";
+import Police from "./users/police";
 import Landing from "./Components/landing"
 import InsertFine from "./Components/insert_fine"
 import InsertVehicles from "./Components/insert_vehicle";
@@ -43,6 +44,8 @@ function App() {
 
       <Route path="/insert_vehicles" exact component={InsertVehicles} />
 
+
+      <Route path="/police_search/" exact component={Police} />
 
 
       <Route path="/search/" exact component={search} />

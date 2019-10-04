@@ -92,8 +92,8 @@ class Register extends React.Component {
     console.log(this.errors);
 
     return (
-      <div className="Base-1">
-        <Form onSubmit={this.onSubmit}>
+      <div className="Base-1 login-Base">
+        <Form onSubmit={this.onSubmit} className="">
           <Form.Group controlId="formBasicName">
             <Form.Label class="form label" >Name</Form.Label>
             <Form.Control

@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { decode } from 'jsonwebtoken';
-// import "./Navbar.css";
+import "./Navbar.css";
 
 
 
@@ -64,9 +64,10 @@ class Navbar extends Component {
       <ul className="navbar-nav">
         <li className="nav-item">
           <Link to="/login" className="nav-link">
-            
+
+            <button className="btn btn-outline-success my-2 my-sm-0">
               Login
-           
+            </button>
           </Link>
         </li>
 
@@ -157,7 +158,7 @@ class Navbar extends Component {
     const policeLink = (<ul className="navbar-nav">
 
       <li className="nav-item">
-        <Link to="/search" className="nav-link">
+        <Link to="/police_search" className="nav-link">
           <button className="btn btn-outline-success my-2 my-sm-0">
             Search
       </button>
@@ -168,7 +169,7 @@ class Navbar extends Component {
       <li className="nav-item">
         <Link to="/insert_fine" className="nav-link">
           <button className="btn btn-outline-success my-2 my-sm-0">
-            InsertFine
+            File complaint
       </button>
         </Link>
       </li>
@@ -194,13 +195,13 @@ class Navbar extends Component {
         </button>
         </Link>
       </li>
-      <li className="nav-item">
+      {/* <li className="nav-item">
         <Link to="/search" className="nav-link">
           <button className="btn btn-outline-success my-2 my-sm-0">
             Search
         </button>
         </Link>
-      </li>
+      </li> */}
       <li className="nav-item">
         <Link to="/register" className="nav-link">
           <button className="btn btn-outline-success my-2 my-sm-0">
@@ -208,20 +209,20 @@ class Navbar extends Component {
         </button>
         </Link>
       </li>
-      <li className="nav-item">
+      {/* <li className="nav-item">
         <Link to="/list" className="nav-link">
           <button className="btn btn-outline-success my-2 my-sm-0">
             list
         </button>
         </Link>
-      </li>
-      <li className="nav-item">
+      </li> */}
+      {/* <li className="nav-item">
         <Link to="/insert_fine" className="nav-link">
           <button className="btn btn-outline-success my-2 my-sm-0">
             InsertFine
         </button>
         </Link>
-      </li>
+      </li> */}
       <li className="nav-item">
         <Link to="/insert_vehicles" className="nav-link">
           <button className="btn btn-outline-success my-2 my-sm-0">
@@ -250,6 +251,7 @@ class Navbar extends Component {
       : "navbar-toggler navbar-toggler";
 
     const style = { 'margin-bottom': '20px' };
+
     function return_nav() {
       var token = localStorage.getItem("id_token");
       if (token) {
@@ -272,7 +274,7 @@ class Navbar extends Component {
     }
     return (
 
-      <nav className="navbar navbar-expand-lg navbar-light bg-primary  " style={style}>
+      <nav className="navbar navbar-expand-lg  " style={style}>
         <button
           className={`${classTwo} `}
           onClick={this.toggleNavbar}
@@ -290,7 +292,7 @@ class Navbar extends Component {
           <ul className="navbar-nav mr-auto ">
             <li className="nav-item active ">
               <Link to="/" className="nav-link">
-                <button className="btn btn-light">
+                <button className="btn btn-outline-success">
                   Home
                   </button>
               </Link>

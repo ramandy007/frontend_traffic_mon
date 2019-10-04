@@ -119,3 +119,11 @@ export const delete_user = user_id => {
     user_id: user_id
   });
 }
+
+export const Search_route = (source, destination) => {
+  console.log(source, destination)
+  return axios.post('/api/users/get_alteroute', {
+    source: source,
+    destination: destination
+  });
+}
