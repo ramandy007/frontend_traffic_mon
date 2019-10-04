@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter, Router } from "react-router-dom";
+import { Link, withRouter, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 
 import "./Navbar.css";
@@ -102,7 +102,7 @@ class Navbar_boot extends Component {
             <ul className="navbar-nav mr-auto ">
               <li className="nav-item active ">
                 <Link to="/" className="nav-link">
-                  <button className="btn btn-outline-success my-2 my-sm-0">
+                  <button className="link text-dark">
                     Home
                   </button>
                 </Link>

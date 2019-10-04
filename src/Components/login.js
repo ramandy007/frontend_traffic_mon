@@ -3,8 +3,9 @@ import { Button, Form } from "react-bootstrap";
 // import { login } from "./userFunctions.js";
 import AuthService from './authservice';
 
-import "bootstrap/dist/css/bootstrap.css";
+
 import "./login.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 class Login extends React.Component {
   constructor(props) {
@@ -38,10 +39,10 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="Base">
+      <div className="Base-login">
         <Form onSubmit={this.onSubmit}>
           <Form.Group controlId="formGroupEmail">
-            <Form.Label>UserName</Form.Label>
+            <Form.Label class="form label">Username</Form.Label >
             <Form.Control
               type="text"
               placeholder="Enter username"
@@ -51,7 +52,7 @@ class Login extends React.Component {
             />
           </Form.Group>
           <Form.Group controlId="formGroupPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label class="form label">Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Password"

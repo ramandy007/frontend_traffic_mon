@@ -112,3 +112,10 @@ export const input_vehicles = vehicle_info => {
 
 
 }
+
+export const delete_user = user_id => {
+  console.log(user_id)
+  return axios.post('/api/users/delete_user', {
+    user_id: user_id
+  });
+}

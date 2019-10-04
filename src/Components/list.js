@@ -28,12 +28,22 @@ class List extends React.Component {
       );
     });
   }
+
+
   render() {
+    const style = {
+
+      'margin-bottom': '1rem',
+
+      'width': '75%',
+      'margin': 'auto',
+      'padding': ' 10px'
+    }
     console.log(this.state.data);
     if (this.state.data !== null) {
       return (
         <div>
-          <Table striped bordered hover>
+          <Table striped bordered hover className="table-striped table-dark" style={style}>
             <thead>
               <tr>
                 <th>user_id </th>

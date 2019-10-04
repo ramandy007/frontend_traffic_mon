@@ -52,8 +52,11 @@ class InsertFine extends React.Component {
     }
 
     render() {
+        const style = {
+            color: '#D84315'
+        }
         return (
-            <div className='Base'>
+            <div className='Base-3' style={style}>
                 <Form onSubmit={this.onSubmit}>
                     <Row>
                         <Col>
@@ -77,7 +80,7 @@ class InsertFine extends React.Component {
                     {(this.state.success) ?
                         <p>input Successfully entered .</p> : this.state.success === false ? <p>{this.error.code} <br /> {this.error.sqlMessage}</p> : null}
 
-                </Form></div>
+                </Form></div >
 
         );
     }

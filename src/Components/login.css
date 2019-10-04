@@ -1,15 +1,9 @@
-* {
-  margin: 0px;
-  text-align: left;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
-.Base {
+.Base-login {
   display: flex;
   justify-content: center;
-  /* margin: 25px; */
+  margin: 25px;
   position: relative;
+  padding: auto;
   top: 50px;
 }
 

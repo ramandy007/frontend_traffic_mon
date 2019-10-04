@@ -4,11 +4,25 @@
   padding: 0px;
   box-sizing: border-box;
 }
-
-.Base {
+.form.label {
+  /* color: white; */
+  color: #d84315;
+}
+.Base-1 {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   /* margin: 25px; */
   position: relative;
   top: 50px;
+  /* background-color: rgb(37, 20, 20);
+   */
+  background-color: #ecf0f1;
+  padding: 20px;
+  margin-left: 25%;
+  border-color: white;
+  /* border-style: solid; */
+  width: 50%;
+  padding-right: 25px;
+  border-radius: 2%;
 }

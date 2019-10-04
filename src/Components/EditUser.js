@@ -89,10 +89,10 @@ class EditUser extends React.Component{
       console.log(this.errors);
   
       return (
-        <div className="Base">
+        <div className="Base-2">
           <Form onSubmit={this.onSubmit}>
             <Form.Group controlId="formBasicName">
-              <Form.Label>Name</Form.Label>
+               <Form.Label  class="form label">Name</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="enter your Name"
@@ -100,7 +100,7 @@ class EditUser extends React.Component{
                 value={this.state.name}
                 onChange={this.onChange}
               />
-              <Form.Label>UserName</Form.Label>
+               <Form.Label  class="form label">UserName</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="enter your UserName"
@@ -109,7 +109,7 @@ class EditUser extends React.Component{
                 onChange={this.onChange}
               />
             </Form.Group>
-            <Form.Label>Email address</Form.Label>
+             <Form.Label  class="form label">Email address</Form.Label>
             <Form.Row>
               <Col>
                 <Form.Group controlId="formBasicEmail">
@@ -138,7 +138,7 @@ class EditUser extends React.Component{
                 </Form.Group>
               </Col>
             </Form.Row>
-            <Form.Label>Password</Form.Label>
+             <Form.Label  class="form label">Password</Form.Label>
             <Form.Row>
               <Col>
                 <Form.Group controlId="formBasicPassword">
@@ -167,7 +167,7 @@ class EditUser extends React.Component{
               </Col>
             </Form.Row>
             <Form.Group controlId="formBasicPhoneNumber">
-              <Form.Label>PhoneNumber</Form.Label>
+               <Form.Label  class="form label">PhoneNumber</Form.Label>
               <Form.Control
                 type="tel"
                 pattern="((\+*)((0[ -]+)*|(91 )*)(\d{12}+|\d{10}+))|\d{5}([- ]*)\d{6}
@@ -179,7 +179,7 @@ class EditUser extends React.Component{
               />
             </Form.Group>
             <Form.Group controlId="formBasicLicenseNumber">
-              <Form.Label>LicenseNumber</Form.Label>
+               <Form.Label  class="form label">LicenseNumber</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="enter your License No"
@@ -190,7 +190,7 @@ class EditUser extends React.Component{
             </Form.Group>
   
             <Form.Group controlId="formBasicuserPermission">
-              <Form.Label>UserPermission</Form.Label>
+               <Form.Label  class="form label">UserPermission</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="admin/police/norm"

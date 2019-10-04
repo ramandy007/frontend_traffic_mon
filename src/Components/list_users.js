@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { list_users } from "./userFunctions";
+import { list_users, delete_user } from "./userFunctions";
 import EditUser from "./EditUser";
 
 
@@ -32,6 +32,7 @@ class List_users extends React.Component {
 
         const handleClose = () => { setShow(false); };
         const handleShow = () => setShow(true);
+        function deleteuser() { console.log('user deleted', props.user_id); delete_user(props.user_id).then(res => { console.log(res) }) }
 
 
         console.log(props)
@@ -39,6 +40,10 @@ class List_users extends React.Component {
             <>
                 <Button variant="primary" onClick={handleShow}>
                     edit
+                </Button>
+
+                <Button variant="primary" onClick={deleteuser}>
+                    delete
                 </Button>
 
                 <Modal show={show} onHide={handleClose} animation={true}>
@@ -68,7 +73,7 @@ class List_users extends React.Component {
     renderTableData() {
         return this.state.data.map((tuple, index) => {
             const { user_name, user_address, user_id, licence_no, user_permission } = tuple;
-            
+
 
             return (
                 <tr key={user_id} data-keys={user_id} >
@@ -92,16 +97,24 @@ class List_users extends React.Component {
         });
     }
     render() {
+        const style = {
+
+            'margin-bottom': '1rem',
+
+            'width': '75%',
+            'margin': 'auto',
+            'padding': ' 10px'
+        }
         console.log(this.state.data);
         if (this.state.data !== null) {
             return (
                 <div>
-                    <Table striped bordered hover>
+                    <Table striped bordered hover className="table-striped table-dark" style={style}>
                         <thead>
                             <tr>
                                 <th>user_id </th>
                                 <th>user_name </th>
-                                <th>user_address </th>
+                                <th>email_address </th>
                                 <th>licence_no </th>
                                 <th>user_permission</th>
 

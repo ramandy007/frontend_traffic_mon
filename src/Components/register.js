@@ -1,7 +1,8 @@
 import React from "react";
 import { register } from "./userFunctions";
 import { Form, Button, Col } from "react-bootstrap";
-// import "./register";
+
+import "./register.css";
 
 class Register extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class Register extends React.Component {
       licensenumber: "",
       password1: "",
       password2: "",
-      user_permission: ""
+      user_permission: "normal"
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -75,7 +76,7 @@ class Register extends React.Component {
       user_address: this.state.email1,
       licence_no: this.state.licensenumber,
       user_permission: this.state.user_permission,
-      phonenumber:this.state.phonenumber
+      phonenumber: this.state.phonenumber
     };
 
     console.log(user);
@@ -91,10 +92,10 @@ class Register extends React.Component {
     console.log(this.errors);
 
     return (
-      <div className="Base">
+      <div className="Base-1">
         <Form onSubmit={this.onSubmit}>
           <Form.Group controlId="formBasicName">
-            <Form.Label>Name</Form.Label>
+            <Form.Label class="form label" >Name</Form.Label>
             <Form.Control
               type="text"
               placeholder="enter your Name"
@@ -102,7 +103,7 @@ class Register extends React.Component {
               value={this.state.name}
               onChange={this.onChange}
             />
-            <Form.Label>UserName</Form.Label>
+            <Form.Label class="form label">UserName</Form.Label>
             <Form.Control
               type="text"
               placeholder="enter your UserName"
@@ -111,7 +112,7 @@ class Register extends React.Component {
               onChange={this.onChange}
             />
           </Form.Group>
-          <Form.Label>Email address</Form.Label>
+          <Form.Label class="form label">Email address</Form.Label>
           <Form.Row>
             <Col>
               <Form.Group controlId="formBasicEmail">
@@ -140,7 +141,7 @@ class Register extends React.Component {
               </Form.Group>
             </Col>
           </Form.Row>
-          <Form.Label>Password</Form.Label>
+          <Form.Label class="form label">Password</Form.Label>
           <Form.Row>
             <Col>
               <Form.Group controlId="formBasicPassword">
@@ -169,11 +170,12 @@ class Register extends React.Component {
             </Col>
           </Form.Row>
           <Form.Group controlId="formBasicPhoneNumber">
-            <Form.Label>PhoneNumber</Form.Label>
+            <Form.Label class="form label">PhoneNumber</Form.Label>
             <Form.Control
               type="tel"
-              pattern="((\+*)((0[ -]+)*|(91 )*)(\d{12}+|\d{10}+))|\d{5}([- ]*)\d{6}
-"
+              //               pattern="((\+*)((0[ -]+)*|(91 )*)(\d{12}+|\d{10}+))|\d{5}([- ]*)\d{6}
+              // "
+              pattern="[0-9]{10}"
               placeholder="enter your Phone Number"
               name="phonenumber"
               value={this.state.phonenumber}
@@ -181,7 +183,7 @@ class Register extends React.Component {
             />
           </Form.Group>
           <Form.Group controlId="formBasicLicenseNumber">
-            <Form.Label>LicenseNumber</Form.Label>
+            <Form.Label class="form label">LicenseNumber</Form.Label>
             <Form.Control
               type="text"
               placeholder="enter your License No"
@@ -191,8 +193,8 @@ class Register extends React.Component {
             />
           </Form.Group>
 
-          <Form.Group controlId="formBasicuserPermission">
-            <Form.Label>UserPermission</Form.Label>
+          {/* <Form.Group controlId="formBasicuserPermission">
+            <Form.Label  class="form label">UserPermission</Form.Label>
             <Form.Control
               type="text"
               placeholder="admin/police/norm"
@@ -200,7 +202,18 @@ class Register extends React.Component {
               value={this.state.user_permission}
               onChange={this.onChange}
             />
+          </Form.Group> */}
+
+
+          <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Label class="form label">UserPermission</Form.Label>
+            <Form.Control as="select" name="user_permission" value={this.state.user_permission} onChange={this.onChange}>
+              <option>normal</option>
+              <option>police</option>
+
+            </Form.Control>
           </Form.Group>
+
 
           <Button variant="primary" type="submit" disabled={!isEnabled}>
             Submit
@@ -211,4 +224,4 @@ class Register extends React.Component {
   }
 }
 
-export  default  Register;
+export default Register;

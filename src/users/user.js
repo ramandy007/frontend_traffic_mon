@@ -17,11 +17,14 @@ class User extends React.Component {
     this.state = {
       plate_no: null,
       License_no: null,
+      source: null,
+      destination: null,
       resulr: null,
       show: false
 
 
     }
+
 
     this.message = null;
     this.onChange = this.onChange.bind(this);
@@ -102,11 +105,34 @@ class User extends React.Component {
           arr.push(<tr>
             <td>{x}</td> <td>{tuple[x]}</td></tr>)
         }
+        arr.push(<tr><td>  </td><td></td></tr>)
         return arr
       })
   }
 
   render() {
+    var source = ['avinashi',
+      'singanalur',
+      'Chennai',
+      'Enmore',
+      'Thiruvannamalai',
+      'Neyveli',
+      'Cuddalore',
+      'Ooty',
+      'Hosur',
+      'Salem'];
+
+    var destination = ['ukadam',
+      'kg theatre',
+      'Ennore',
+      'Manali',
+      'Harur',
+      'Tanjavur',
+      'Chinnaselam',
+      'Erode',
+      'Denkanikotai',
+      'Vaniyambadi',
+    ]
 
 
 
@@ -134,30 +160,62 @@ class User extends React.Component {
 
 
     return (
-      <div>
-        <div className="Base">
-          <Form name='source_destination' onSubmit={this.onSubmit}>
-            <Form.Group controlId="formUserDestination" className="ltr">
-              <div className="ltr-child">
-                <Form.Label>Destination</Form.Label>
-                <Form.Control type="text" placeholder="destination" />
-              </div>
-              <div className="ltr-child">
-                <Form.Label>Source</Form.Label>
-                <Form.Control type="text" placeholder="source" />
-              </div>
 
-              <div className="btn-user">
-                <Button variant="primary" type="submit">
-                  Search
+      <div className="Base">
+        <div className="Base_child">
+          {/* <Form name='source_destination' onSubmit={this.onSubmit}>
+              <Form.Group controlId="formUserDestination" className="ltr">
+                <div className="ltr-child">
+                  <Form.Label class="form label">Destination</Form.Label >
+                  <Form.Control type="text" placeholder="destination" />
+                </div>
+                <div className="ltr-child">
+                  <Form.Label class="form label">Source</Form.Label >
+                  <Form.Control type="text" placeholder="source" />
+                </div>
+
+                <div className="btn-user">
+                  <Button variant="primary" type="submit">
+                    Search
               </Button>
-              </div>
-            </Form.Group></Form>
+                </div>
+              </Form.Group></Form> */}
+          <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Label class="form label">source</Form.Label>
+            <Form.Control inline label='1' as="select" name="source" value={this.state.source} onChange={this.onChange} default='avinashi'>
+              <option >select</option>
+              {source.map((value, index) => {
+                return <option>{value}</option>
+              })}
 
+            </Form.Control>
+          </Form.Group>
+
+          <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Label class="form label">destination</Form.Label>
+            <Form.Control inline label='2' as="select" name="destination" default='ukadam' value={this.state.destination} onChange={this.onChange}>
+              <option >select</option>
+
+              {destination.map((value, index) => {
+                return <option>{value}</option>
+              })}
+
+            </Form.Control>
+
+
+          </Form.Group>
+          <Form.Group> <div className="btn-user">
+            <Button variant="primary" type="submit">
+              Search
+              </Button>
+          </div></Form.Group>
+
+        </div>
+        <div className="Base_child">
           <Form name='licence' onSubmit={this.onSubmit}>
             <Form.Group ControlId="UserInfo" className="ltr_1">
               <div className="ltr-child">
-                <Form.Label>License Number</Form.Label>
+                <Form.Label class="form label">License Number</Form.Label >
                 <Form.Control type="text" placeholder="License Number" name='License_no' onChange={this.onChange} value={this.state.License_no} />
               </div>
 
@@ -169,28 +227,31 @@ class User extends React.Component {
               </div>
             </Form.Group>
           </Form>
+        </div>
 
-          <Form name='plate' onSubmit={this.onSubmit}>
-            <Form.Group ControlId="UserInfo" className="ltr_1">
-              <div className="ltr-child">
-                <Form.Label>Plate Number</Form.Label>
-                <Form.Control type="text" placeholder="Plate Number" name='plate_no' onChange={this.onChange} value={this.state.plate_no}
-                />
-              </div>
+        <div className="Base_child">  <Form name='plate' onSubmit={this.onSubmit}>
+          <Form.Group ControlId="UserInfo" className="ltr_1">
+            <div className="ltr-child">
+              <Form.Label class="form label">Plate Number</Form.Label >
+              <Form.Control type="text" placeholder="Plate Number" name='plate_no' onChange={this.onChange} value={this.state.plate_no}
+              />
+            </div>
 
-              <div className="btn-user">
-                <Button variant="primary" type="submit" name='search'>
-                  Search
+            <div className="btn-user">
+              <Button variant="primary" type="submit" name='search'>
+                Search
               </Button>
-              </div>
-            </Form.Group>
-          </Form>
+            </div>
+          </Form.Group>
+        </Form>
 
         </div>
         {modal}
 
-
       </div >
+
+
+
     );
   }
 }

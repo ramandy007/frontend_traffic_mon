@@ -56,8 +56,11 @@ class InputVehicles extends React.Component {
 
 
     render() {
+        const style = {
+            color: '#D84315'
+        }
         return (
-            <div className='Base'>
+            <div className='Base-3' style={style}>
                 <Form onSubmit={this.onSubmit}>
                     <Row>
                         <Col>

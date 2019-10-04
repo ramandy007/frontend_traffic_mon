@@ -30,7 +30,6 @@ function App() {
     <BrowserRouter> <div className="App">
       <Navbar />
 
-
       <Route path="/login" exact render={(routeProps) => <Login {...routeProps} />} />
       <Route path="/register/" exact component={Registerfunc} />
 
@@ -49,7 +48,12 @@ function App() {
       <Route path="/search/" exact component={search} />
       <Route path="/" exact render={(routeProps) => <Landing {...routeProps} />} />
 
-    </div></BrowserRouter>
+    </div>
+
+    </BrowserRouter>
+
+
+
 
   );
 }

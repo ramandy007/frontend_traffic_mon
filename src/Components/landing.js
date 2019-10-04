@@ -21,10 +21,11 @@ class Landing extends Component {
                 <div className="jumbotron mt-5">
                     <div className="col-sm-8 mx-auto">
                         <h1 className="text-center">Welcome</h1>
-                        {this.decoded ? (<div><p>your name is: {this.decoded.username}</p>
-                            <p>your permission is : {this.decoded.user_permission}</p></div>) : 'Login to access user details !!!'}
+                        {this.decoded ? (<div><p>Name: {this.decoded.username}</p>
+                            <p>Permission: {this.decoded.user_permission}</p></div>) : 'Login to access user details !!!'}
 
                     </div>
+
                 </div>
             </div>
         );
